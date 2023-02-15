@@ -63,7 +63,6 @@ const index = ({ data }) => {
                 <div className="text-3xl my-4">
                   <Time timestamp={item.departure_time}></Time>
                 </div>
-                <h1>HSDKSKDk</h1>
                 <div className="text-2xl text-slate-500" lolol>
                   {item.departure_airport.charAt(0).toUpperCase() +
                     item.departure_airport.slice(1)}
@@ -109,15 +108,22 @@ const index = ({ data }) => {
 export default index;
 //write the get serverside props to fettch the data from the supabase
 export async function getServerSideProps(context) {
-  const { departureCity, arrivalCity, date } = context.query;
+  let { departureCity, arrivalCity, date } = context.query;
+  //log data
+    console.log(departureCity, arrivalCity, date);
+    //make cities lowercase
+    departureCity = departureCity.toLowerCase();
+    arrivalCity = arrivalCity.toLowerCase();
 
   //get the data from the supabase''
   const { data, error } = await supabase
     .from("bookings")
     .select("*")
-    .eq("departure_airport", "lahore")
-    .eq("arrival_airport", "karachi");
+    .eq("departure_airport", departureCity)
+    .eq("arrival_airport", arrivalCity);
   // .eq('date', date)
+
+
 
   console.log(data);
 
