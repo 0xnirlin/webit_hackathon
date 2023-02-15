@@ -25,12 +25,15 @@ function MyForm({departure_airport, arrival_airport, departure_time}) {
           <Formik
             initialValues={{ name: "", email: "", cnic: "", phoneNo: "", passportNo:"", nationality:"" }}
             onSubmit={async (values,actions) => {
+              //go to a link
+              // router.push("https://buy.stripe.com/test_3cs6si10q7gIfHG5kk")
               console.log("Hello World")
-              actions.resetForm({values:initialValues})
+              // actions.resetForm({values:initialValues})
 
               try
               {
-              let request = await fetch("http://localhost:3000/api/mail", {
+                console.log("Here")
+              let request = await fetch("/api/mail", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -124,14 +127,13 @@ function MyForm({departure_airport, arrival_airport, departure_time}) {
                   />
                 </div>
               </div>
-              <a href="https://buy.stripe.com/test_3cs6si10q7gIfHG5kk">
               <button
                 type="submit"
                 className="flex p-3 bg-orange-500 text-lg text-white font-semibold rounded-md w-[40%] items-center justify-center mt-10 hover:bg-orange-600 "
               >
                 Confirm Booking
               </button>
-              </a>
+              
               
             </Form>
           </Formik>

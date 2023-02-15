@@ -1,9 +1,10 @@
 
 import Twilio from "twilio";
 
-const client = new Twilio("SK74dd02ea4a456cbdf6be1e6ba6bc8881", "f58dc23fcacd7eb9d45e9ccd94235d0e");
+const client = new Twilio("ACeaf77ead88f6760ce9fc77c33db4615a", "f58dc23fcacd7eb9d45e9ccd94235d0e");
 
 export default function handler(req, res) {
+    console.log("Hello resqusa")
   if (req.method == "POST") {
 
    //get the departure_time , departure_airport and arrival_airport from the request body
@@ -15,7 +16,7 @@ export default function handler(req, res) {
         .create({
             body: `Your flight from ${departure_airport} to ${arrival_airport} is scheduled to depart at ${departure_time}`,
             from: "+16193049350",
-            to: "+9230435100977",
+            to: "+923435100977",
         })
         .then((message) => console.log(message.sid))
         .catch((err) => console.log(err));
