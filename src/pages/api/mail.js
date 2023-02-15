@@ -1,7 +1,7 @@
 
 import Twilio from "twilio";
 
-const client = new Twilio("ACeaf77ead88f6760ce9fc77c33db4615a", "f58dc23fcacd7eb9d45e9ccd94235d0e");
+const client = new Twilio("ACeaf77ead88f6760ce9fc77c33db4615a", process.env.AUTH);
 
 export default function handler(req, res) {
     console.log("Hello resqusa")
